@@ -1,0 +1,7 @@
+{
+  "name": "proceso",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
