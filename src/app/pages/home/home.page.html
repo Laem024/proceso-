@@ -1,28 +1,30 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Home</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">Logout</ion-button>  <!-- Botón de logout -->
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-button expand="full" (click)="fetchUserData()" [disabled]="loading">
-    {{ loading ? 'Loading...' : 'Fetch User Data' }}
-  </ion-button>
+  <ion-button expand="block" (click)="fetchDataInParallel()">Fetch Data</ion-button>
 
-  <div *ngIf="!loading">
-    <h2>User Names</h2>
-    <ul>
-      <li *ngFor="let name of userNames">{{ name }}</li>
-    </ul>
+  <!-- Mostrar solo los nombres -->
+  <h3>Nombres:</h3>
+  <ul>
+    <li *ngFor="let name of names">{{ name }}</li>
+  </ul>
 
-    <h2>User Emails</h2>
-    <ul>
-      <li *ngFor="let email of userEmails">{{ email }}</li>
-    </ul>
+  <!-- Mostrar solo los correos -->
+  <h3>Correos:</h3>
+  <ul>
+    <li *ngFor="let email of emails">{{ email }}</li>
+  </ul>
 
-    <h2>User Names and Emails</h2>
-    <ul>
-      <li *ngFor="let user of userNamesAndEmails">{{ user.name_and_email }}</li>
-    </ul>
-  </div>
+  <!-- Mostrar nombres y correos combinados (del tercer endpoint) -->
+  <h3>Nombres & Emails:</h3>
+  <ul *ngIf="combined">
+    <li *ngFor="let user of combined">{{ user.name }} - {{ user.email }}</li>
+  </ul>
 </ion-content>

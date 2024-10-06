@@ -1,23 +1,29 @@
 import { Component } from '@angular/core';
-import { Store } from '@ngrx/store';
-import * as AuthActions from '../../store/auth.actions';
+import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
+  styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
-  email: string = '';
-  password: string = '';
+  email: string ='';
+  password: string='';
 
-  constructor(private store: Store, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
-  onLogin() {
-    this.store.dispatch(AuthActions.login({ email: this.email, password: this.password }));
-  }
-
-  goToRegister() {
-    this.router.navigate(['/register']);
+  // Método para iniciar sesión
+  login() {
+    this.authService.login(this.email, this.password).subscribe(
+      () => {
+        // Navegar a la página de inicio si el login es exitoso
+        this.router.navigateByUrl('/home');
+      },
+      (err) => {
+        console.error('Error en el login:', err);
+        alert('Credenciales incorrectas');
+      }
+    );
   }
 }

@@ -5,10 +5,9 @@
 </ion-header>
 
 <ion-content>
-
   <ion-item>
     <ion-label position="floating">Name</ion-label>
-    <ion-input [(ngModel)]="name" type="text"></ion-input>
+    <ion-input [(ngModel)]="name"></ion-input>
   </ion-item>
 
   <ion-item>
@@ -21,6 +20,5 @@
     <ion-input [(ngModel)]="password" type="password"></ion-input>
   </ion-item>
 
-  <ion-button expand="full" (click)="onRegister()">Register</ion-button>
-  <ion-button expand="full" (click)="goToLogin()">Login</ion-button>
+  <ion-button expand="block" (click)="register()">Register</ion-button>
 </ion-content>
