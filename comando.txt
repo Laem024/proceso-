@@ -1,0 +1,15 @@
+ionic capacitor run android --livereload --external
+
+go run cmd\main.go
+
+ionic build
+ionic cap sync android
+ionic cap open android
+
+
+emulator -list-avds
+emulator -avd <nombre_del_emulador>
+
+
+android\app\src\main\res\xml\network_security_config.xml
+
