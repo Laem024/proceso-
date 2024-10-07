@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://192.168.0.155:3000';  // Cambia por la URL de tu API en producción
+  private apiUrl = 'https://nestjs-api-580897309192.us-central1.run.app';  // Cambia por la URL de tu API en producción
 
   constructor(private http: HttpClient) {}
 
